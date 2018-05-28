@@ -16,16 +16,16 @@
             <column name="password" sql-type="varchar(25)" length="25"/>
         </property>
         <property name="tel">
-            <column name="tel" sql-type="char(11)" length="11" not-null="true"/>
+            <column name="tel" sql-type="char(11)" length="11" not-null="false"/>
         </property>
         <property name="email">
-            <column name="email" sql-type="varchar(25)" length="25" not-null="true"/>
+            <column name="email" sql-type="varchar(25)" length="25" not-null="false"/>
         </property>
         <property name="identity">
-            <column name="identity" sql-type="char(1)" length="1"/>
+            <column name="identity" sql-type="char(1)" length="1" not-null="true"/>
         </property>
         <property name="status">
-            <column name="status" sql-type="char(1)" length="1" not-null="true"/>
+            <column name="status" sql-type="char(1)" length="1" not-null="false"/>
         </property>
 
         <!--department 属性，Admin 和 Department 多对一-->

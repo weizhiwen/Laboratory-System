@@ -16,7 +16,7 @@
             <column name="url" sql-type="varchar(25)" length="25"/>
         </property>
         <property name="icon">
-            <column name="icon" sql-type="varchar(25)" length="25" not-null="true"/>
+            <column name="icon" sql-type="varchar(25)" length="25" not-null="false"/>
         </property>
 
         <!--自关联，需要配置父级权限和子级权限的一对多关系和子级权限和父级权限的多对一关系-->

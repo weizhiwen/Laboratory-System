@@ -11,16 +11,12 @@
         <property name="db.properties.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
         <property name="connection.url">jdbc:mysql://localhost:3306/laboratory</property>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <mapping resource="hibernate/Admin.hbm.xml"/>
-        <mapping resource="cn/edu/yangtzeu/entity/AdminRoleEntity.hbm.xml"/>
-        <mapping resource="cn/edu/yangtzeu/entity/DepartmentEntity.hbm.xml"/>
-        <mapping resource="cn/edu/yangtzeu/entity/PrivilegeEntity.hbm.xml"/>
-        <mapping resource="hibernate/Role.hbm.xml"/>
-        <mapping resource="cn/edu/yangtzeu/entity/RolePrivilegeEntity.hbm.xml"/>
-        <mapping resource="hibernate/Privilege.hbm.xml"/>
-        <mapping resource="hibernate/Department.hbm.xml"/>
 
         <!--引入实体类的映射文件-->
+        <mapping resource="hibernate/Admin.hbm.xml"/>
+        <mapping resource="hibernate/Role.hbm.xml"/>
+        <mapping resource="hibernate/Privilege.hbm.xml"/>
+        <mapping resource="hibernate/Department.hbm.xml"/>
         <!--<mapping resource="hibernate/Admin.hbm.xml"/>-->
         <!--<mapping resource="hibernate/Role.hbm.xml"/>-->
         <!--<mapping resource="hibernate/Privilege.hbm.xml"/>-->
