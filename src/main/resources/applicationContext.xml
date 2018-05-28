@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+    <!--引入 db.properties 配置文件-->
+    <context:property-placeholder location="classpath:db.properties"/>
+
+    <!--配置 c3p0 数据源-->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <!--注入属性值-->
+        <property name="driverClass" value="${db.driverClass}"/>
+        <property name="jdbcUrl" value="${db.jdbcUrl}"/>
+        <property name="user" value="${db.user}"/>
+        <property name="password" value="${db.password}"/>
+    </bean>
+
+    <!--配置 Hibernate 的 SessionFactory 对象-->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <!--指定数据源-->
+        <property name="dataSource" ref="dataSource"/>
+        <!--指定使用 Hibernate 核心配置文件的位置-->
+        <property name="configLocations" value="classpath:hibernate.cfg.xml"/>
+    </bean>
+
+    <!--配置 spring 的事务管理器-->
+    <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <!--注入 sessionFactory 对象-->
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <context:annotation-config/>
+    <!--开启事务注解-->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <!--开启注解扫描-->
+    <context:component-scan base-package="cn.edu.yangtzeu"/>
+
+    <!--手动引入 spring 对象配置文件-->
+    <!--<import resource="classpath:spring/admin.xml"/>-->
+    <!--<import resource="classpath:spring/privilege.xml"/>-->
+    <!--<import resource="classpath:spring/role.xml"/>-->
+    <!--<import resource="classpath:spring/user.xml"/>-->
+    <!--<import resource="classpath:spring/banji.xml"/>-->
+    <!--<import resource="classpath:spring/bbssection.xml"/>-->
+    <!--<import resource="classpath:spring/bbspost.xml"/>-->
+    <!--<import resource="classpath:spring/bbscomment.xml"/>-->
+    <!--<import resource="classpath:spring/labInfo.xml"/>-->
+    <!--<import resource="classpath:spring/resworks.xml"/>-->
+    <!--<import resource="classpath:spring/resteach.xml"/>-->
+    <!--<import resource="classpath:spring/announce.xml"/>-->
+    <!--<import resource="classpath:spring/lablayout.xml"/>-->
+    <!--<import resource="classpath:spring/labequipment.xml"/>-->
+    <!--<import resource="classpath:spring/course.xml"/>-->
+
+</beans>

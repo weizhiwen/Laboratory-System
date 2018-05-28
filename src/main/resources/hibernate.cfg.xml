@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!--Hibernate 配置-->
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">false</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="db.properties.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/laboratory</property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <mapping resource="hibernate/Admin.hbm.xml"/>
+        <mapping resource="cn/edu/yangtzeu/entity/AdminRoleEntity.hbm.xml"/>
+        <mapping resource="cn/edu/yangtzeu/entity/DepartmentEntity.hbm.xml"/>
+        <mapping resource="cn/edu/yangtzeu/entity/PrivilegeEntity.hbm.xml"/>
+        <mapping resource="hibernate/Role.hbm.xml"/>
+        <mapping resource="cn/edu/yangtzeu/entity/RolePrivilegeEntity.hbm.xml"/>
+        <mapping resource="hibernate/Privilege.hbm.xml"/>
+        <mapping resource="hibernate/Department.hbm.xml"/>
+
+        <!--引入实体类的映射文件-->
+        <!--<mapping resource="hibernate/Admin.hbm.xml"/>-->
+        <!--<mapping resource="hibernate/Role.hbm.xml"/>-->
+        <!--<mapping resource="hibernate/Privilege.hbm.xml"/>-->
+        <!--<mapping resource="hibernate/Banji.hbm.xml"/>-->
+        <!--<mapping resource="hibernate/User.hbm.xml"/>-->
+        <!--<mapping resource="hibernate/BBSSection.hbm.xml"/>-->
+        <!--<mapping resource="hibernate/BBSPost.hbm.xml"/>-->
+        <!--<mapping resource="hibernate/BBSComment.hbm.xml"/>-->
+
+        <!--<mapping resource="hibernate/LabInfo.hbm.xml"/>-->
+        <!--<mapping resource="hibernate/LabEquipment.hbm.xml"/>-->
+        <!--<mapping resource="hibernate/LabLayout.hbm.xml"/>-->
+        <!--<mapping resource="hibernate/Announce.hbm.xml"/>-->
+        <!--<mapping resource="hibernate/ResTeach.hbm.xml"/>-->
+        <!--<mapping resource="hibernate/ResWorks.hbm.xml"/>-->
+
+        <!--<mapping resource="hibernate/Course.hbm.xml"/>-->
+        <!--<mapping resource="hibernate/BookTeacher.hbm.xml"/>-->
+        <!--<mapping resource="hibernate/BookStudent.hbm.xml"/>-->
+    </session-factory>
+</hibernate-configuration>

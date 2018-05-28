@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="cn.edu.yangtzeu.entity.Privilege" table="privilege" schema="laboratory">
+        <id name="id">
+            <column name="id" sql-type="smallint(6)"/>
+            <generator class="native"/>
+        </id>
+        <property name="name">
+            <column name="name" sql-type="varchar(10)" length="10"/>
+        </property>
+        <property name="url">
+            <column name="url" sql-type="varchar(25)" length="25"/>
+        </property>
+        <property name="icon">
+            <column name="icon" sql-type="varchar(25)" length="25" not-null="true"/>
+        </property>
+
+        <!--自关联，需要配置父级权限和子级权限的一对多关系和子级权限和父级权限的多对一关系-->
+        <set name="children" lazy="false" order-by="id">
+            <key column="parentId"/>
+            <one-to-many class="cn.edu.yangtzeu.entity.Privilege"/>
+        </set>
+        <many-to-one name="parent" class="cn.edu.yangtzeu.entity.Privilege" column="parentId"/>
+
+        <!--roles 属性，Privilege 和 Role 多对多-->
+        <set name="roles" table="role_privilege">
+            <key column="privilegeId"/>
+            <many-to-many class="cn.edu.yangtzeu.entity.Role" column="roleId"/>
+        </set>
+    </class>
+</hibernate-mapping>

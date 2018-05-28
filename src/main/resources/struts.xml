@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+    <!--配置为开发模式-->
+    <constant name="struts.devMode" value="true"/>
+    <package name="admin" extends="struts-default" namespace="/">
+        <!--声明一个拦截器-->
+        <interceptors>
+            <interceptor name="checkPrivilege" class="cn.edu.yangtzeu.interceptor.CheckPrivilegeInterceptor"></interceptor>
+            <!--重新定义 defaultStack 拦截器栈，需要先判断权限-->
+            <!--覆盖默认的 defaultStack 拦截器栈-->
+            <interceptor-stack name="defaultStack">
+                <interceptor-ref name="checkPrivilege"/>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+        </interceptors>
+        <!--配置全局的 result-->
+        <global-results>
+            <result name="toLogin">/WEB-INF/admin/login.jsp</result>
+            <result name="noPrivilege">/WEB-INF/admin/util/noPrivilege.jsp</result>
+        </global-results>
+
+        <!--管理员用户-->
+        <action name="admin_*" class="cn.edu.yangtzeu.action.AdminAction" method="{1}">
+            <result name="toLogin">/WEB-INF/admin/home/login.jsp</result>
+            <result name="login">/WEB-INF/admin/home/index.jsp</result>
+            <result name="logout" type="redirectAction">admin_toLogin</result>
+            <result name="toEdit">/WEB-INF/admin/admin/toEdit.jsp</result>
+            <result name="edit" type="redirectAction">admin_toEdit</result>
+            <result name="toEditPassword">/WEB-INF/admin/admin/toEditPassword.jsp</result>
+            <result name="editPassword" type="redirectAction">admin_toEdit</result>
+            <result name="list">/WEB-INF/admin/admin/list.jsp</result>
+            <result name="toSet">/WEB-INF/admin/admin/toRole.jsp</result>
+            <result name="set" type="redirectAction">admin_list</result>
+        </action>
+
+        <!--角色管理-->
+        <action name="role_*" class="cn.edu.yangtzeu.action.RoleAction" method="{1}">
+            <result name="list">/WEB-INF/admin/role/list.jsp</result>
+            <result name="toAdd">/WEB-INF/admin/role/toAdd.jsp</result>
+            <result name="add" type="redirectAction">role_list</result>
+            <result name="toEdit">/WEB-INF/admin/role/toEdit.jsp</result>
+            <result name="edit" type="redirectAction">role_list</result>
+            <result name="delete" type="redirectAction">role_list</result>
+            <result name="toSet">/WEB-INF/admin/role/toPrivilege.jsp</result>
+            <result name="set" type="redirectAction">role_list</result>
+        </action>
+
+        <!--人员管理-->
+        <!--学生-->
+        <action name="student_*" class="cn.edu.yangtzeu.action.StudentAction" method="{1}">
+            <result name="list">/WEB-INF/admin/user/student/list.jsp</result>
+            <result name="toAdd">/WEB-INF/admin/user/student/toAdd.jsp</result>
+            <result name="add" type="redirectAction">student_list</result>
+            <result name="init" type="redirectAction">student_list</result>
+        </action>
+        <!--教师-->
+        <action name="teacher_*" class="cn.edu.yangtzeu.action.TeacherAction" method="{1}">
+            <result name="list">/WEB-INF/admin/user/teacher/list.jsp</result>
+            <result name="toAdd">/WEB-INF/admin/user/teacher/toAdd.jsp</result>
+            <result name="add" type="redirectAction">teacher_list</result>
+            <result name="init" type="redirectAction">teacher_list</result>
+        </action>
+        <!--实验室管理员-->
+        <action name="labadmin_*" class="cn.edu.yangtzeu.action.LabAdminAction" method="{1}">
+            <result name="list">/WEB-INF/admin/admin/labadmin/list.jsp</result>
+            <result name="toAdd">/WEB-INF/admin/admin/labadmin/toAdd.jsp</result>
+            <result name="add" type="redirectAction">labadmin_list</result>
+            <result name="init" type="redirectAction">labadmin_list</result>
+        </action>
+        <!--系主任-->
+        <action name="departhead_*" class="cn.edu.yangtzeu.action.DepartHeadAction" method="{1}">
+            <result name="list">/WEB-INF/admin/admin/departhead/list.jsp</result>
+            <result name="toAdd">/WEB-INF/admin/admin/departhead/toAdd.jsp</result>
+            <result name="add" type="redirectAction">departhead_list</result>
+            <result name="init" type="redirectAction">departhead_list</result>
+        </action>
+        <!--院实验室中心主任-->
+        <action name="labcollegehead_*" class="cn.edu.yangtzeu.action.LabCollegeHeadAction" method="{1}">
+            <result name="list">/WEB-INF/admin/admin/labcollegehead/list.jsp</result>
+            <result name="toAdd">/WEB-INF/admin/admin/labcollegehead/toAdd.jsp</result>
+            <result name="add" type="redirectAction">labcollegehead_list</result>
+            <result name="init" type="redirectAction">labcollegehead_list</result>
+        </action>
+        <!--校实验室中心主任-->
+        <action name="labschoolhead_*" class="cn.edu.yangtzeu.action.LabSchoolHeadAction" method="{1}">
+            <result name="list">/WEB-INF/admin/admin/labschoolhead/list.jsp</result>
+            <result name="toAdd">/WEB-INF/admin/admin/labschoolhead/toAdd.jsp</result>
+            <result name="add" type="redirectAction">labschoolhead_list</result>
+            <result name="init" type="redirectAction">labschoolhead_list</result>
+        </action>
+
+        <!--论坛-->
+        <!--版块-->
+        <action name="bbsection_*" class="cn.edu.yangtzeu.action.BBSSectionAction" method="{1}">
+            <result name="list">/WEB-INF/admin/bbs/section/list.jsp</result>
+            <result name="toAdd">/WEB-INF/admin/bbs/section/toAdd.jsp</result>
+            <result name="add" type="redirectAction">bbsection_list</result>
+            <result name="toEdit">/WEB-INF/admin/bbs/section/toEdit.jsp</result>
+            <result name="edit" type="redirectAction">bbsection_list</result>
+            <result name="delete" type="redirectAction">bbsection_list</result>
+        </action>
+        <!--帖子-->
+        <action name="bbspost_*" class="cn.edu.yangtzeu.action.BBSPostAction" method="{1}">
+            <result name="list">/WEB-INF/admin/bbs/post/list.jsp</result>
+            <result name="delete" type="redirectAction">bbspost_list</result>
+        </action>
+        <!--评论-->
+        <action name="bbscomment_*" class="cn.edu.yangtzeu.action.BBSCommentAction" method="{1}">
+            <result name="list">/WEB-INF/admin/bbs/comment/list.jsp</result>
+            <result name="delete" type="redirectAction">bbscomment_list</result>
+        </action>
+
+        <!--实验室-->
+        <!--实验室信息-->
+        <action name="labinfo_*" class="cn.edu.yangtzeu.action.LabInfoAction" method="{1}">
+            <result name="list">/WEB-INF/admin/lab/labinfo/list.jsp</result>
+            <result name="toAdd">/WEB-INF/admin/lab/labinfo/toAdd.jsp</result>
+            <result name="add" type="redirectAction">labinfo_list</result>
+            <result name="toEdit">/WEB-INF/admin/lab/labinfo/toEdit.jsp</result>
+            <result name="edit" type="redirectAction">labinfo_list</result>
+            <result name="delete" type="redirectAction">labinfo_list</result>
+        </action>
+        <!--实验室公告-->
+        <action name="announce_*" class="cn.edu.yangtzeu.action.AnnounceAction" method="{1}">
+            <result name="list">/WEB-INF/admin/lab/announce/list.jsp</result>
+            <result name="toAdd">/WEB-INF/admin/lab/announce/toAdd.jsp</result>
+            <result name="add" type="redirectAction">announce_list</result>
+            <result name="toEdit">/WEB-INF/admin/lab/announce/toEdit.jsp</result>
+            <result name="edit" type="redirectAction">announce_list</result>
+            <result name="delete" type="redirectAction">announce_list</result>
+        </action>
+        <!--实验室布局-->
+        <action name="lablayout_*" class="cn.edu.yangtzeu.action.LabLayoutAction" method="{1}">
+            <result name="list">/WEB-INF/admin/lab/lablayout/list.jsp</result>
+            <result name="toAdd">/WEB-INF/admin/lab/lablayout/toAdd.jsp</result>
+            <result name="add" type="redirectAction">lablayout_list</result>
+            <result name="toEdit">/WEB-INF/admin/lab/lablayout/toEdit.jsp</result>
+            <result name="edit" type="redirectAction">lablayout_list</result>
+            <result name="delete" type="redirectAction">lablayout_list</result>
+        </action>
+        <!--实验室设备-->
+        <action name="labequipment_*" class="cn.edu.yangtzeu.action.LabEquipmentAction" method="{1}">
+            <result name="list">/WEB-INF/admin/lab/labequipment/list.jsp</result>
+            <result name="toAdd">/WEB-INF/admin/lab/labequipment/toAdd.jsp</result>
+            <result name="add" type="redirectAction">labequipment_list</result>
+            <result name="toEdit">/WEB-INF/admin/lab/labequipment/toEdit.jsp</result>
+            <result name="edit" type="redirectAction">labequipment_list</result>
+            <result name="delete" type="redirectAction">labequipment_list</result>
+        </action>
+
+        <!--资源-->
+        <!--教学资源-->
+        <action name="resteach_*" class="cn.edu.yangtzeu.action.ResTeachAction" method="{1}">
+            <result name="list">WEB-INF/admin/resource/resteach/list.jsp</result>
+            <result name="toAdd">/WEB-INF/admin/resource/resteach/toAdd.jsp</result>
+            <result name="add" type="redirectAction">resteach_list</result>
+            <result name="toEdit">/WEB-INF/admin/resource/resteach/toEdit.jsp</result>
+            <result name="edit" type="redirectAction">resteach_list</result>
+            <result name="delete" type="redirectAction">resteach_list</result>
+            <result name="success" type="stream">
+                <!-- inputName 流对象名 —— 比如这里写fileStream，它就会自动去找Action中的getFileStream方法。 -->
+                <param name="inputName">inputStream</param>
+                <!-- contentDisposition 使用经过转码的文件名作为下载文件名 —— 默认格式是attachment;filename="${docName}"，将调用该Action中的getDocName方法。 -->
+                <param name="contentDisposition">attachment;filename=${docName}</param>
+            </result>
+        </action>
+        <!--学生作品-->
+        <action name="resworks_*" class="cn.edu.yangtzeu.action.ResWorksAction" method="{1}">
+            <result name="list">/WEB-INF/admin/resource/resworks/list.jsp</result>
+            <result name="toAdd">/WEB-INF/admin/resource/resworks/toAdd.jsp</result>
+            <result name="add" type="redirectAction">resworks_list</result>
+            <result name="toEdit">/WEB-INF/admin/resource/resworks/toEdit.jsp</result>
+            <result name="edit" type="redirectAction">resworks_list</result>
+            <result name="delete" type="redirectAction">resworks_list</result>
+            <result name="success" type="stream">
+                <!-- inputName 流对象名 —— 比如这里写fileStream，它就会自动去找Action中的getFileStream方法。 -->
+                <param name="inputName">inputStream</param>
+                <!-- contentDisposition 使用经过转码的文件名作为下载文件名 —— 默认格式是attachment;filename="${docName}"，将调用该Action中的getDocName方法。 -->
+                <param name="contentDisposition">attachment;filename=${docName}</param>
+            </result>
+        </action>
+
+        <!--实验课程-->
+        <action name="labcourse_*" class="cn.edu.yangtzeu.action.CourseAction" method="{1}">
+            <result name="list">/WEB-INF/admin/course/list.jsp</result>
+            <result name="toAdd">/WEB-INF/admin/course/toAdd.jsp</result>
+            <result name="add" type="redirectAction">labcourse_list</result>
+            <result name="toEdit">/WEB-INF/admin/course/toEdit.jsp</result>
+            <result name="edit" type="redirectAction">labcourse_list</result>
+            <result name="delete" type="redirectAction">labcourse_list</result>
+        </action>
+    </package>
+    <!--引入不需要使用自定义的拦截器拦截的 struts2 的配置文件，系统前台-->
+    <include file="struts/user.xml"/>
+    <include file="struts/bbs.xml"/>
+</struts>

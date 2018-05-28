@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="cn.edu.yangtzeu.entity.Role" table="role" schema="laboratory">
+        <id name="id">
+            <column name="id" sql-type="tinyint(4)"/>
+            <generator class="native"/>
+        </id>
+        <property name="name">
+            <column name="name" sql-type="varchar(15)" length="15"/>
+        </property>
+        <property name="description">
+            <column name="description" sql-type="varchar(25)" length="25" not-null="true"/>
+        </property>
+
+        <!--admins 属性，Role 和 Admin 多对多-->
+        <set name="admins" table="admin_role">
+            <key column="roleId"/>
+            <many-to-many class="cn.edu.yangtzeu.entity.Admin" column="adminId"/>
+        </set>
+
+        <!--privileges 属性，Role 和 Privilege 多对多-->
+        <set name="privileges" table="role_privilege" lazy="false">
+            <key column="roleId"/>
+            <many-to-many class="cn.edu.yangtzeu.entity.Privilege" column="privilegeId"/>
+        </set>
+    </class>
+</hibernate-mapping>
