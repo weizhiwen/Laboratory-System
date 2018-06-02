@@ -11,17 +11,17 @@ import java.util.Set;
  * @param admins 院系下的管理人员
  */
 public class Department {
-    private byte id;
+    private short id;
     private String name;
 
     // 实体中的对象
     private Set<Admin> admins = new HashSet<Admin>();
 
-    public byte getId() {
+    public short getId() {
         return id;
     }
 
-    public void setId(byte id) {
+    public void setId(short id) {
         this.id = id;
     }
 

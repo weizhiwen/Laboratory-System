@@ -12,7 +12,7 @@ import java.util.Set;
  * @param privileges 所拥有权限
  */
 public class Role {
-    private byte id;
+    private short id;
     private String name;
     private String description;
 
@@ -20,11 +20,11 @@ public class Role {
     private Set<Admin> admins = new HashSet<Admin>();
     private Set<Privilege> privileges = new HashSet<Privilege>();
 
-    public byte getId() {
+    public short getId() {
         return id;
     }
 
-    public void setId(byte id) {
+    public void setId(short id) {
         this.id = id;
     }
 

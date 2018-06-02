@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="roleAction" class="cn.edu.yangtzeu.action.RoleAction" scope="prototype">
+        <property name="roleService" ref="roleService"/>
+        <property name="privilegeService" ref="privilegeService"/>
+   </bean>
+    <bean id="roleService" class="cn.edu.yangtzeu.service.RoleService">
+        <property name="roleDao" ref="roleDaoImpl"/>
+    </bean>
+    <bean id="roleDaoImpl" class="cn.edu.yangtzeu.dao.impl.RoleDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+</beans>

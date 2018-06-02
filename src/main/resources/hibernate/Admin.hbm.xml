@@ -29,7 +29,7 @@
         </property>
 
         <!--department 属性，Admin 和 Department 多对一-->
-        <many-to-one name="department" class="cn.edu.yangtzeu.entity.Department" column="departmentId"/>
+        <many-to-one name="department" class="cn.edu.yangtzeu.entity.Department" column="departmentId" lazy="false"/>
 
         <!--roles 属性，Admin 和 Role 多对多-->
         <set name="roles" table="admin_role" lazy="false">

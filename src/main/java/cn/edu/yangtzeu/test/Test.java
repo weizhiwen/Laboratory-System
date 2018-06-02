@@ -2,8 +2,6 @@ package cn.edu.yangtzeu.test;
 
 import cn.edu.yangtzeu.entity.Admin;
 import cn.edu.yangtzeu.entity.Department;
-import cn.edu.yangtzeu.entity.Privilege;
-import cn.edu.yangtzeu.entity.Role;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.context.ApplicationContext;
@@ -25,13 +23,13 @@ public class Test {
 
         // 1.超级管理员
         Admin admin = new Admin();
-        admin.setId("admin".toCharArray());
+        admin.setId("admin");
         admin.setName("超级管理员");
         admin.setPassword("admin");
-        admin.setIdentity("0".toCharArray());
-        admin.setStatus("1".toCharArray());
+        admin.setIdentity('0');
+        admin.setStatus('1');
         Department department = new Department();
-        department.setId((byte) 1);
+        department.setId((short) 1);
         admin.setDepartment(department);
         session.save(admin);
     }

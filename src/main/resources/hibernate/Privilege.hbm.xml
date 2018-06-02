@@ -13,7 +13,7 @@
             <column name="name" sql-type="varchar(10)" length="10"/>
         </property>
         <property name="url">
-            <column name="url" sql-type="varchar(25)" length="25"/>
+            <column name="url" sql-type="varchar(25)" length="25" not-null="false"/>
         </property>
         <property name="icon">
             <column name="icon" sql-type="varchar(25)" length="25" not-null="false"/>

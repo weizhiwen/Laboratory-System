@@ -37,20 +37,8 @@
     <context:component-scan base-package="cn.edu.yangtzeu"/>
 
     <!--手动引入 spring 对象配置文件-->
-    <!--<import resource="classpath:spring/admin.xml"/>-->
-    <!--<import resource="classpath:spring/privilege.xml"/>-->
-    <!--<import resource="classpath:spring/role.xml"/>-->
-    <!--<import resource="classpath:spring/user.xml"/>-->
-    <!--<import resource="classpath:spring/banji.xml"/>-->
-    <!--<import resource="classpath:spring/bbssection.xml"/>-->
-    <!--<import resource="classpath:spring/bbspost.xml"/>-->
-    <!--<import resource="classpath:spring/bbscomment.xml"/>-->
-    <!--<import resource="classpath:spring/labInfo.xml"/>-->
-    <!--<import resource="classpath:spring/resworks.xml"/>-->
-    <!--<import resource="classpath:spring/resteach.xml"/>-->
-    <!--<import resource="classpath:spring/announce.xml"/>-->
-    <!--<import resource="classpath:spring/lablayout.xml"/>-->
-    <!--<import resource="classpath:spring/labequipment.xml"/>-->
-    <!--<import resource="classpath:spring/course.xml"/>-->
-
+    <import resource="classpath:spring/admin.xml"/>
+    <import resource="classpath:spring/privilege.xml"/>
+    <import resource="classpath:spring/role.xml"/>
+    <import resource="classpath:spring/department.xml"/>
 </beans>

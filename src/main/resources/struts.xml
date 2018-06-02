@@ -32,6 +32,7 @@
             <result name="toEditPassword">/WEB-INF/admin/admin/toEditPassword.jsp</result>
             <result name="editPassword" type="redirectAction">admin_toEdit</result>
             <result name="list">/WEB-INF/admin/admin/list.jsp</result>
+            <result name="delete" type="redirectAction">admin_list</result>
             <result name="toSet">/WEB-INF/admin/admin/toRole.jsp</result>
             <result name="set" type="redirectAction">admin_list</result>
         </action>

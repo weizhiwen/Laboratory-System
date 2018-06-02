@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="adminAction" class="cn.edu.yangtzeu.action.AdminAction" scope="prototype">
+        <property name="adminService" ref="adminService"/>
+        <property name="roleService" ref="roleService"/>
+        <property name="departmentService" ref="departmentService"/>
+    </bean>
+    <!--实验室管理员-->
+    <bean id="LabAdminAction" class="cn.edu.yangtzeu.action.LabAdminAction" scope="prototype">
+        <property name="adminService" ref="adminService"/>
+        <property name="departmentService" ref="departmentService"/>
+    </bean>
+    <!--系主任-->
+    <bean id="DepartHeadAction" class="cn.edu.yangtzeu.action.DepartHeadAction" scope="prototype">
+        <property name="adminService" ref="adminService"/>
+        <property name="departmentService" ref="departmentService"/>
+    </bean>
+    <!--院实验室中心主任-->
+    <bean id="LabCollegeHeadAction" class="cn.edu.yangtzeu.action.LabCollegeHeadAction" scope="prototype">
+        <property name="adminService" ref="adminService"/>
+        <property name="departmentService" ref="departmentService"/>
+    </bean>
+    <!--校实验室中心主任-->
+    <bean id="LabSchoolHeadAction" class="cn.edu.yangtzeu.action.LabSchoolHeadAction" scope="prototype">
+        <property name="adminService" ref="adminService"/>
+    </bean>
+    <bean id="adminService" class="cn.edu.yangtzeu.service.AdminService">
+        <property name="adminDao" ref="adminDaoImpl"/>
+    </bean>
+    <bean id="adminDaoImpl" class="cn.edu.yangtzeu.dao.impl.AdminDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+</beans>

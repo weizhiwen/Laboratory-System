@@ -17,24 +17,5 @@
         <mapping resource="hibernate/Role.hbm.xml"/>
         <mapping resource="hibernate/Privilege.hbm.xml"/>
         <mapping resource="hibernate/Department.hbm.xml"/>
-        <!--<mapping resource="hibernate/Admin.hbm.xml"/>-->
-        <!--<mapping resource="hibernate/Role.hbm.xml"/>-->
-        <!--<mapping resource="hibernate/Privilege.hbm.xml"/>-->
-        <!--<mapping resource="hibernate/Banji.hbm.xml"/>-->
-        <!--<mapping resource="hibernate/User.hbm.xml"/>-->
-        <!--<mapping resource="hibernate/BBSSection.hbm.xml"/>-->
-        <!--<mapping resource="hibernate/BBSPost.hbm.xml"/>-->
-        <!--<mapping resource="hibernate/BBSComment.hbm.xml"/>-->
-
-        <!--<mapping resource="hibernate/LabInfo.hbm.xml"/>-->
-        <!--<mapping resource="hibernate/LabEquipment.hbm.xml"/>-->
-        <!--<mapping resource="hibernate/LabLayout.hbm.xml"/>-->
-        <!--<mapping resource="hibernate/Announce.hbm.xml"/>-->
-        <!--<mapping resource="hibernate/ResTeach.hbm.xml"/>-->
-        <!--<mapping resource="hibernate/ResWorks.hbm.xml"/>-->
-
-        <!--<mapping resource="hibernate/Course.hbm.xml"/>-->
-        <!--<mapping resource="hibernate/BookTeacher.hbm.xml"/>-->
-        <!--<mapping resource="hibernate/BookStudent.hbm.xml"/>-->
     </session-factory>
 </hibernate-configuration>
