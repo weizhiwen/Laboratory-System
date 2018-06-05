@@ -18,7 +18,7 @@ public class DepartmentService {
         return departmentDao.findAll();
     }
 
-    public Department findOne(short departmentId) {
+    public Department findOne(int departmentId) {
         return departmentDao.findOne(departmentId);
     }
 

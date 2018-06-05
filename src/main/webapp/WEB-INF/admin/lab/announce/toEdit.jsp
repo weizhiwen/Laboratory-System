@@ -17,19 +17,11 @@
 <body>
 <div class="container-fluid">
     <div class="col-lg-4 col-md-6 col-sm-8 col-xm-12">
-        <form class="form-horizontal" action="announce_edit.action">
-            <input type="hidden" name="id" value="${requestScope.announce.id}">
+        <form class="form-horizontal" action="labannounce_edit.action">
+            <input type="hidden" name="id" value="${requestScope.labAnnounce.id}">
             <div class="form-group">
                 <label class="control-label">公告内容：</label>
-                <input type="text" class="form-control" name="content" value="${requestScope.announce.content}" required>
-            </div>
-            <div class="form-group">
-                <label class="control-label">创建人：</label>
-                <input type="text" class="form-control" name="creator" value="${requestScope.announce.creator}" required>
-            </div>
-            <div class="form-group">
-                <label class="control-label">创建时间：</label>
-                <input type="text" class="form-control" name="createTime" value="${requestScope.announce.createTime}" required>
+                <input type="text" class="form-control" name="content" value="${requestScope.labAnnounce.content}" required>
             </div>
             <div class="form-inline">
                 <input type="submit" class="btn btn-primary" value="修改公告">

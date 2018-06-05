@@ -19,27 +19,29 @@
     <div class="container-fluid">
         <div class="main">
             <div id="toolbar">
-                <a class="waves-effect waves-button" href="announce_toAdd" ><i class="zmdi zmdi-plus"></i> 添加公告</a>
+                <a class="waves-effect waves-button" href="labannounce_toAdd" ><i class="zmdi zmdi-plus"></i> 添加公告</a>
             </div>
             <div class="table-responsive">
                 <table class="table table-striped table-hover">
                     <tr>
                         <th>公告序号</th>
                         <th>公告内容</th>
+                        <th>所属院系</th>
                         <th>创建人</th>
                         <th>创建时间</th>
                         <th>操作</th>
                     </tr>
-                    <s:iterator value="#request.announceList">
+                    <s:iterator value="#request.labAnnounceList">
                         <tr>
                             <td>${id}</td>
                             <td>${content}</td>
+                            <td>${department.name}</td>
                             <td>${creator}</td>
                             <td>${createTime}</td>
                             <td>
-                                <s:a action="announce_delete.action?id=%{id}" onclick="return confirm('确认要删除吗？')"><i class="zmdi zmdi-close"></i> 删除</s:a>
+                                <s:a action="labannounce_delete.action?id=%{id}" onclick="return confirm('确认要删除吗？')"><i class="zmdi zmdi-close"></i> 删除</s:a>
                                 &nbsp;
-                                <s:a action="announce_toEdit.action?id=%{id}"><i class="zmdi zmdi-edit"></i> 修改</s:a>&nbsp;
+                                <s:a action="labannounce_toEdit.action?id=%{id}"><i class="zmdi zmdi-edit"></i> 修改</s:a>&nbsp;
                             </td>
                         </tr>
                     </s:iterator>

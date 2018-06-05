@@ -39,7 +39,7 @@
                 <input type="text" class="form-control" value="实验室管理员" readonly>
             </div>
             <div class="form-group">
-                <label class="control-label">院系：</label>
+                <label class="control-label">所属院系：</label>
                 <s:if test="#session.admin.department.id != 1">
                     <input type="hidden" name="departmentId" value="${sessionScope.admin.department.id}">
                     <input type="text" class="form-control" value="${sessionScope.admin.department.name}" readonly>
