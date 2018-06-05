@@ -43,13 +43,13 @@ public class AdminAction extends ActionSupport implements ModelDriven<Admin> {
         this.oldPassword = oldPassword;
     }
 
-    private Short[] roleIds;
+    private Integer[] roleIds;
 
-    public Short[] getRoleIds() {
+    public Integer[] getRoleIds() {
         return roleIds;
     }
 
-    public void setRoleIds(Short[] roleIds) {
+    public void setRoleIds(Integer[] roleIds) {
         this.roleIds = roleIds;
     }
 
@@ -169,7 +169,7 @@ public class AdminAction extends ActionSupport implements ModelDriven<Admin> {
         Admin admin = adminService.findOne(model.getId());
         ActionContext.getContext().put("admin", admin);
         int size = admin.getRoles().size();
-        roleIds = new Short[size];
+        roleIds = new Integer[size];
         Collection<Role> roles = admin.getRoles();
         int index = 0;
         for(Role role : roles) {

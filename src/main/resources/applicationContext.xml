@@ -41,4 +41,8 @@
     <import resource="classpath:spring/privilege.xml"/>
     <import resource="classpath:spring/role.xml"/>
     <import resource="classpath:spring/department.xml"/>
+    <import resource="classpath:spring/labInfo.xml"/>
+    <import resource="classpath:spring/labAnnounce.xml"/>
+    <import resource="classpath:spring/labLayout.xml"/>
+    <import resource="classpath:spring/labEquipment.xml"/>
 </beans>

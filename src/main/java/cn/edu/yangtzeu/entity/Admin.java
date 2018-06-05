@@ -8,16 +8,17 @@ import java.util.Set;
 
 /**
  * 管理员实体类
- * @author 魏志文
- * @param id 登录号
- * @param name 登录名
- * @param password 登录密码
- * @param tel 电话号码
- * @param email 邮箱
- * @param identity 管理员身份
- * @param status 帐号状态
+ *
+ * @param id         登录号
+ * @param name       登录名
+ * @param password   登录密码
+ * @param tel        电话号码
+ * @param email      邮箱
+ * @param identity   管理员身份
+ * @param status     帐号状态
  * @param department 所属的院系
- * @param roles 所拥有角色
+ * @param roles      所拥有角色
+ * @author 魏志文
  */
 public class Admin {
     private String id;
@@ -106,6 +107,7 @@ public class Admin {
 
     /**
      * 判断管理员是否有权限访问该 url
+     *
      * @param privilegeUrl
      * @return
      */
@@ -126,12 +128,12 @@ public class Admin {
         // 有权限则返回 true
         List<String> allPrivilegeUrls = (List<String>) ActionContext.getContext().getApplication().get("privilegeUrlList");
         // 如果权限表中未包含的 url，则说明此 url 不做权限验证，否则要验证后才可以使用权限
-        if(!allPrivilegeUrls.contains(privilegeUrl)) {
+        if (!allPrivilegeUrls.contains(privilegeUrl)) {
             return true;
         } else {
-            for(Role role : roles) {
-                for(Privilege privilege : role.getPrivileges()) {
-                    if(privilegeUrl.equals(privilege.getUrl())) {
+            for (Role role : roles) {
+                for (Privilege privilege : role.getPrivileges()) {
+                    if (privilegeUrl.equals(privilege.getUrl())) {
                         return true;
                     }
                 }
@@ -142,6 +144,7 @@ public class Admin {
 
     /**
      * 根据 id 判断是否是超级管理员
+     *
      * @return
      */
     private boolean isAdmin() {
@@ -151,13 +154,13 @@ public class Admin {
 
     public boolean hasPrivilegeByName(String privilegeName) {
         // 超级管理员直接跳过
-        if(isAdmin()) {
+        if (isAdmin()) {
             return true;
         }
         // 普通用户有权限返回 true
-        for(Role role : roles) {
+        for (Role role : roles) {
             for (Privilege privilege : role.getPrivileges()) {
-                if(privilege.getName().equals(privilegeName)) {
+                if (privilege.getName().equals(privilegeName)) {
                     return true;
                 }
             }

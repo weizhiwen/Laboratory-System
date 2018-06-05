@@ -31,14 +31,20 @@
                 <label class="control-label">实验室位置：</label>
                 <input type="text" class="form-control" name="location" value="${requestScope.labInfo.location}" required>
             </div>
-            <%--<div class="form-group">--%>
-                <%--<label class="control-label">创建人：</label>--%>
-                <%--<input type="text" class="form-control" name="creator" value="${requestScope.labInfo.creator}" required>--%>
-            <%--</div>--%>
-            <%--<div class="form-group">--%>
-                <%--<label class="control-label">创建时间：</label>--%>
-                <%--<input type="text" class="form-control" name="createTime" value="${requestScope.labInfo.createTime}" required>--%>
-            <%--</div>--%>
+            <div class="form-group">
+                <label class="control-label">容纳人数：</label>
+                <input type="number" class="form-control" name="number" value="${requestScope.labInfo.number}" required>
+            </div>
+            <s:if test="#session.admin.department.id == 1">
+                <div class="form-group">
+                    <label class="control-label">所属院系：</label>
+                    <select name="departmentId" class="form-control">
+                        <s:iterator value="departmentList">
+                            <option value="${id}" <s:if test="#request.labInfo.department.id == departmentId">selected</s:if>>${name}</option>
+                        </s:iterator>
+                    </select>
+                </div>
+            </s:if>
             <div class="form-inline">
                 <input type="submit" class="btn btn-primary" value="修改实验室信息">
                 <a class="btn btn-primary" href="javascript:history.go(-1);">返回</a>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="labEquipmentAction" class="cn.edu.yangtzeu.action.LabEquipmentAction" scope="prototype">
+        <property name="labEquipmentService" ref="labEquipmentService"/>
+        <property name="labInfoService" ref="labInfoService"/>
+   </bean>
+    <bean id="labEquipmentService" class="cn.edu.yangtzeu.service.LabEquipmentService">
+        <property name="labEquipmentDao" ref="labEquipmentDaoImpl"/>
+    </bean>
+    <bean id="labEquipmentDaoImpl" class="cn.edu.yangtzeu.dao.impl.LabEquipmentDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+</beans>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.edu.yangtzeu.entity">
+    <class name="LabLayout" table="lab_layout">
+        <id name="id">
+           <generator class="native"/>
+        </id>
+        <property name="title" length="32"/>
+        <property name="img" type="imm_binary"/>
+        <property name="creator" length="25"/>
+        <property name="createTime" length="19"/>
+
+        <!--department 属性，LabLayout 和 Department 多对一-->
+        <many-to-one name="department" class="cn.edu.yangtzeu.entity.Department" column="departmentId"/>
+    </class>
+</hibernate-mapping>

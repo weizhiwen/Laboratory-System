@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cn.edu.yangtzeu.entity.LabAnnounce" table="lab_announce" schema="laboratory">
+        <id name="id">
+            <generator class="native"/>
+        </id>
+        <property name="content" length="255" type="string"/>
+        <property name="creator" length="25" type="string"/>
+        <property name="createTime" length="19" type="string"/>
+
+        <!--department 属性，LabAnnounce 和 Department 多对一-->
+        <many-to-one name="department" class="cn.edu.yangtzeu.entity.Department" column="departmentId"/>
+    </class>
+</hibernate-mapping>

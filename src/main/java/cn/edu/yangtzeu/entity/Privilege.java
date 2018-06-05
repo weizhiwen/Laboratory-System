@@ -4,17 +4,17 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * @author 魏志文
- * @param id 权限序号
- * @param name 权限名
- * @param url 权限url
- * @param icon 菜单图标
- * @param parent 父级权限
+ * @param id       权限序号
+ * @param name     权限名
+ * @param url      权限url
+ * @param icon     菜单图标
+ * @param parent   父级权限
  * @param children 下级权限
- * @param roles 所属角色
+ * @param roles    所属角色
+ * @author 魏志文
  */
 public class Privilege {
-    private short id;
+    private int id;
     private String name;
     private String url;
     private String icon;
@@ -24,11 +24,11 @@ public class Privilege {
     private Set<Privilege> children = new HashSet<Privilege>();
     private Set<Role> roles = new HashSet<Role>();
 
-    public short getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(short id) {
+    public void setId(int id) {
         this.id = id;
     }
 

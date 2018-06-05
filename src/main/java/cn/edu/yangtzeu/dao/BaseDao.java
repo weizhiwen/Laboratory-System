@@ -25,7 +25,6 @@ public interface BaseDao<T> {
 
     // 根据ids查询部分
     List<T> findSome(Integer[] ids);
-    List<T> findSome(Short[] ids);
 
     //查询所有
     List<T> findAll();

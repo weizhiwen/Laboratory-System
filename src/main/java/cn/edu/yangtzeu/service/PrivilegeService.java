@@ -22,7 +22,7 @@ public class PrivilegeService {
         return privilegeDao.findAllPrivilegeUrl();
     }
 
-    public List<Privilege> findSome(Short[] privilegeIds) {
+    public List<Privilege> findSome(Integer[] privilegeIds) {
         return privilegeDao.findSome(privilegeIds);
     }
 }

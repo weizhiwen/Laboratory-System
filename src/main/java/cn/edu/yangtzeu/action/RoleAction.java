@@ -33,13 +33,13 @@ public class RoleAction extends ActionSupport implements ModelDriven<Role>{
     }
 
     // 属性注入
-    private Short[] privilegeIds;
+    private Integer[] privilegeIds;
 
-    public Short[] getPrivilegeIds() {
+    public Integer[] getPrivilegeIds() {
         return privilegeIds;
     }
 
-    public void setPrivilegeIds(Short[] privilegeIds) {
+    public void setPrivilegeIds(Integer[] privilegeIds) {
         this.privilegeIds = privilegeIds;
     }
 
@@ -64,7 +64,7 @@ public class RoleAction extends ActionSupport implements ModelDriven<Role>{
     // 转到修改角色
     public String toEdit(){
         // 准备回显数据
-        short id = model.getId();
+        Integer id = model.getId();
         Role role = roleService.findOne(id);
         ActionContext.getContext().put("role", role);
         return "toEdit";
@@ -79,7 +79,7 @@ public class RoleAction extends ActionSupport implements ModelDriven<Role>{
     // 删除角色
     public String delete() {
         // 先查询后删除
-        short id = model.getId();
+        Integer id = model.getId();
         Role role = roleService.findOne(id);
         if(role != null) {
             roleService.delete(role);
@@ -90,7 +90,7 @@ public class RoleAction extends ActionSupport implements ModelDriven<Role>{
     // 转到设置权限
     public String toSet() {
         // 准备数据
-        short id = model.getId();
+        Integer id = model.getId();
         Role role = roleService.findOne(id);
         ActionContext.getContext().put("role", role);
         List<Privilege> topPrivilegeList = privilegeService.findTopList();
@@ -98,7 +98,7 @@ public class RoleAction extends ActionSupport implements ModelDriven<Role>{
 
         // 准备回显数据
         int size = role.getPrivileges().size();
-        privilegeIds = new Short[size];
+        privilegeIds = new Integer[size];
         Collection<Privilege> privileges = role.getPrivileges();
         int index = 0;
         for(Privilege privilege : privileges) {

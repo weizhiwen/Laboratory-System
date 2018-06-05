@@ -117,37 +117,37 @@
         <!--实验室-->
         <!--实验室信息-->
         <action name="labinfo_*" class="cn.edu.yangtzeu.action.LabInfoAction" method="{1}">
-            <result name="list">/WEB-INF/admin/lab/labinfo/list.jsp</result>
-            <result name="toAdd">/WEB-INF/admin/lab/labinfo/toAdd.jsp</result>
+            <result name="list">/WEB-INF/admin/lab/info/list.jsp</result>
+            <result name="toAdd">/WEB-INF/admin/lab/info/toAdd.jsp</result>
             <result name="add" type="redirectAction">labinfo_list</result>
-            <result name="toEdit">/WEB-INF/admin/lab/labinfo/toEdit.jsp</result>
+            <result name="toEdit">/WEB-INF/admin/lab/info/toEdit.jsp</result>
             <result name="edit" type="redirectAction">labinfo_list</result>
             <result name="delete" type="redirectAction">labinfo_list</result>
         </action>
         <!--实验室公告-->
-        <action name="announce_*" class="cn.edu.yangtzeu.action.AnnounceAction" method="{1}">
+        <action name="labannounce_*" class="cn.edu.yangtzeu.action.LabAnnounceAction" method="{1}">
             <result name="list">/WEB-INF/admin/lab/announce/list.jsp</result>
             <result name="toAdd">/WEB-INF/admin/lab/announce/toAdd.jsp</result>
-            <result name="add" type="redirectAction">announce_list</result>
+            <result name="add" type="redirectAction">labannounce_list</result>
             <result name="toEdit">/WEB-INF/admin/lab/announce/toEdit.jsp</result>
-            <result name="edit" type="redirectAction">announce_list</result>
-            <result name="delete" type="redirectAction">announce_list</result>
+            <result name="edit" type="redirectAction">labannounce_list</result>
+            <result name="delete" type="redirectAction">labannounce_list</result>
         </action>
         <!--实验室布局-->
         <action name="lablayout_*" class="cn.edu.yangtzeu.action.LabLayoutAction" method="{1}">
-            <result name="list">/WEB-INF/admin/lab/lablayout/list.jsp</result>
-            <result name="toAdd">/WEB-INF/admin/lab/lablayout/toAdd.jsp</result>
+            <result name="list">/WEB-INF/admin/lab/layout/list.jsp</result>
+            <result name="toAdd">/WEB-INF/admin/lab/layout/toAdd.jsp</result>
             <result name="add" type="redirectAction">lablayout_list</result>
-            <result name="toEdit">/WEB-INF/admin/lab/lablayout/toEdit.jsp</result>
+            <result name="toEdit">/WEB-INF/admin/lab/layout/toEdit.jsp</result>
             <result name="edit" type="redirectAction">lablayout_list</result>
             <result name="delete" type="redirectAction">lablayout_list</result>
         </action>
         <!--实验室设备-->
         <action name="labequipment_*" class="cn.edu.yangtzeu.action.LabEquipmentAction" method="{1}">
-            <result name="list">/WEB-INF/admin/lab/labequipment/list.jsp</result>
-            <result name="toAdd">/WEB-INF/admin/lab/labequipment/toAdd.jsp</result>
+            <result name="list">/WEB-INF/admin/lab/equipment/list.jsp</result>
+            <result name="toAdd">/WEB-INF/admin/lab/equipment/toAdd.jsp</result>
             <result name="add" type="redirectAction">labequipment_list</result>
-            <result name="toEdit">/WEB-INF/admin/lab/labequipment/toEdit.jsp</result>
+            <result name="toEdit">/WEB-INF/admin/lab/equipment/toEdit.jsp</result>
             <result name="edit" type="redirectAction">labequipment_list</result>
             <result name="delete" type="redirectAction">labequipment_list</result>
         </action>
@@ -155,10 +155,10 @@
         <!--资源-->
         <!--教学资源-->
         <action name="resteach_*" class="cn.edu.yangtzeu.action.ResTeachAction" method="{1}">
-            <result name="list">WEB-INF/admin/resource/resteach/list.jsp</result>
-            <result name="toAdd">/WEB-INF/admin/resource/resteach/toAdd.jsp</result>
+            <result name="list">WEB-INF/admin/resource/teach/list.jsp</result>
+            <result name="toAdd">/WEB-INF/admin/resource/teach/toAdd.jsp</result>
             <result name="add" type="redirectAction">resteach_list</result>
-            <result name="toEdit">/WEB-INF/admin/resource/resteach/toEdit.jsp</result>
+            <result name="toEdit">/WEB-INF/admin/resource/teach/toEdit.jsp</result>
             <result name="edit" type="redirectAction">resteach_list</result>
             <result name="delete" type="redirectAction">resteach_list</result>
             <result name="success" type="stream">
@@ -170,10 +170,10 @@
         </action>
         <!--学生作品-->
         <action name="resworks_*" class="cn.edu.yangtzeu.action.ResWorksAction" method="{1}">
-            <result name="list">/WEB-INF/admin/resource/resworks/list.jsp</result>
-            <result name="toAdd">/WEB-INF/admin/resource/resworks/toAdd.jsp</result>
+            <result name="list">/WEB-INF/admin/resource/works/list.jsp</result>
+            <result name="toAdd">/WEB-INF/admin/resource/works/toAdd.jsp</result>
             <result name="add" type="redirectAction">resworks_list</result>
-            <result name="toEdit">/WEB-INF/admin/resource/resworks/toEdit.jsp</result>
+            <result name="toEdit">/WEB-INF/admin/resource/works/toEdit.jsp</result>
             <result name="edit" type="redirectAction">resworks_list</result>
             <result name="delete" type="redirectAction">resworks_list</result>
             <result name="success" type="stream">

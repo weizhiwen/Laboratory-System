@@ -4,15 +4,15 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * @author 魏志文
- * @param id 角色序号
- * @param name 角色名
+ * @param id          角色序号
+ * @param name        角色名
  * @param description 角色描述
- * @param admins 所属管理员
- * @param privileges 所拥有权限
+ * @param admins      所属管理员
+ * @param privileges  所拥有权限
+ * @author 魏志文
  */
 public class Role {
-    private short id;
+    private int id;
     private String name;
     private String description;
 
@@ -20,11 +20,11 @@ public class Role {
     private Set<Admin> admins = new HashSet<Admin>();
     private Set<Privilege> privileges = new HashSet<Privilege>();
 
-    public short getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(short id) {
+    public void setId(int id) {
         this.id = id;
     }
 

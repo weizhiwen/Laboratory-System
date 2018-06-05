@@ -6,7 +6,7 @@
 
     <class name="cn.edu.yangtzeu.entity.Role" table="role" schema="laboratory">
         <id name="id">
-            <column name="id" sql-type="tinyint(4)"/>
+            <column name="id" sql-type="int"/>
             <generator class="native"/>
         </id>
         <property name="name">

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cn.edu.yangtzeu.entity.LabEquipment" table="lab_equipment">
+        <id name="id">
+           <generator class="native"/>
+        </id>
+        <property name="name" length="32" type="string"/>
+        <property name="status" length="5" type="string"/>
+        <property name="description" length="255" type="string"/>
+        <!--通过 length 属性设置图片的类型大小-->
+        <property name="img" type="binary" length="102400"/>
+		<property name="inTime"  length="19" type="string"/>
+
+        <!--labInfo 属性，LabEquipment 和 LabInfo 多对一-->
+        <many-to-one name="labInfo" class="cn.edu.yangtzeu.entity.LabInfo" column="labId"/>
+    </class>
+</hibernate-mapping>

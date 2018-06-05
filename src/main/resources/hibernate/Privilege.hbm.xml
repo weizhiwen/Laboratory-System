@@ -6,7 +6,7 @@
 
     <class name="cn.edu.yangtzeu.entity.Privilege" table="privilege" schema="laboratory">
         <id name="id">
-            <column name="id" sql-type="smallint(6)"/>
+            <column name="id" sql-type="int"/>
             <generator class="native"/>
         </id>
         <property name="name">

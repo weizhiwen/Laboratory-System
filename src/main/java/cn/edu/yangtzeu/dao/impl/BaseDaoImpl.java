@@ -74,15 +74,6 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
     }
 
     @Override
-    public List<T> findSome(Short[] ids) {
-        if(ids == null || ids.length == 0) {
-            return Collections.EMPTY_LIST;
-        } else {
-            return this.getHibernateTemplate().getSessionFactory().getCurrentSession().createQuery("FROM "+ pClass.getSimpleName() + " WHERE id IN(:ids)").setParameterList("ids", ids).list();
-        }
-    }
-
-    @Override
     public List<T> findAll() {
         //使用Class里面的getSimpleName() 得到类的名称
         return (List<T>) this.getHibernateTemplate().find("FROM " + pClass.getSimpleName());

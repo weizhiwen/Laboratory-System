@@ -22,7 +22,7 @@ public class RoleService {
         roleDao.add(role);
     }
 
-    public Role findOne(short id) {
+    public Role findOne(Integer id) {
         return roleDao.findOne(id);
     }
 
@@ -34,7 +34,7 @@ public class RoleService {
         roleDao.update(role);
     }
 
-    public List<Role> findSome(Short[] roleIds) {
+    public List<Role> findSome(Integer[] roleIds) {
         return roleDao.findSome(roleIds);
     }
 }

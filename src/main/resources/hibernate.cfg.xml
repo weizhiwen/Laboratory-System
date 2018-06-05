@@ -8,7 +8,7 @@
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.format_sql">false</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
-        <property name="db.properties.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+        <property name="db.properties.dialect">org.hibernate.dialect.MySQL5Dialect</property>
         <property name="connection.url">jdbc:mysql://localhost:3306/laboratory</property>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
 
@@ -17,5 +17,9 @@
         <mapping resource="hibernate/Role.hbm.xml"/>
         <mapping resource="hibernate/Privilege.hbm.xml"/>
         <mapping resource="hibernate/Department.hbm.xml"/>
+        <mapping resource="hibernate/LabInfo.hbm.xml"/>
+        <mapping resource="hibernate/LabAnnounce.hbm.xml"/>
+        <mapping resource="hibernate/LabLayout.hbm.xml"/>
+        <mapping resource="hibernate/LabEquipment.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

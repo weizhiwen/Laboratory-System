@@ -6,17 +6,35 @@
 
     <class name="cn.edu.yangtzeu.entity.Department" table="department" schema="laboratory">
         <id name="id">
-            <column name="id" sql-type="tinyint(4)"/>
+            <column name="id" sql-type="int"/>
             <generator class="native"/>
         </id>
         <property name="name">
             <column name="name" sql-type="varchar(20)" length="20"/>
         </property>
 
-        <!--admins 属性，Banji 和 User 一对多-->
+        <!--admins 属性，Department 和 Admin 一对多-->
         <set name="admins">
             <key column="departmentId"/>
             <one-to-many class="cn.edu.yangtzeu.entity.Admin"/>
+        </set>
+
+        <!--labInfos 属性，LabInfo 和 Admin 一对多-->
+        <set name="labInfos">
+            <key column="departmentId"/>
+            <one-to-many class="cn.edu.yangtzeu.entity.LabInfo"/>
+        </set>
+
+        <!--labAnnounces 属性，LabAnnounce 和 Admin 一对多-->
+        <set name="labAnnounces">
+            <key column="departmentId"/>
+            <one-to-many class="cn.edu.yangtzeu.entity.LabAnnounce"/>
+        </set>
+
+        <!--labLayouts 属性，LabLayout 和 Admin 一对多-->
+        <set name="labLayouts">
+            <key column="departmentId"/>
+            <one-to-many class="cn.edu.yangtzeu.entity.LabLayout"/>
         </set>
     </class>
 </hibernate-mapping>
