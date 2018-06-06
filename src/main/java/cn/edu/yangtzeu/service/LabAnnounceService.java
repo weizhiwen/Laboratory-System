@@ -3,6 +3,7 @@ package cn.edu.yangtzeu.service;
 import cn.edu.yangtzeu.dao.LabAnnounceDao;
 import cn.edu.yangtzeu.entity.LabAnnounce;
 import org.springframework.transaction.annotation.Transactional;
+import cn.edu.yangtzeu.entity.Department;
 
 import java.util.List;
 
@@ -17,6 +18,10 @@ public class LabAnnounceService {
 
     public List<LabAnnounce> findAll() {
         return labAnnounceDao.findAll();
+    }
+
+    public List<LabAnnounce> findAll(Department department) {
+        return labAnnounceDao.findAll(department);
     }
 
     public void add(LabAnnounce announce) {

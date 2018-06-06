@@ -23,6 +23,16 @@
                 <label class="control-label">公告内容：</label>
                 <input type="text" class="form-control" name="content" value="${requestScope.labAnnounce.content}" required>
             </div>
+            <s:if test="#session.admin.department.id == 1">
+                <div class="form-group">
+                    <label class="control-label">所属院系：</label>
+                    <select name="departmentId" class="form-control">
+                        <s:iterator value="departmentList">
+                            <option value="${id}" <s:if test="#request.labInfo.department.id == departmentId">selected</s:if>>${name}</option>
+                        </s:iterator>
+                    </select>
+                </div>
+            </s:if>
             <div class="form-inline">
                 <input type="submit" class="btn btn-primary" value="修改公告">
                 <a class="btn btn-primary" href="javascript:history.go(-1);">返回</a>

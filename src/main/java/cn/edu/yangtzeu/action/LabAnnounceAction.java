@@ -47,7 +47,14 @@ public class LabAnnounceAction extends ActionSupport implements ModelDriven<LabA
 
     // 公告列表方法
     public String list() {
-        List<LabAnnounce> labAnnounceList = labAnnounceService.findAll();
+        // 按院系划分查询
+        Admin admin = (Admin) ActionContext.getContext().getSession().get("admin");
+        List<LabAnnounce> labAnnounceList;
+        if(admin.getDepartment().getId() == 1) {
+            labAnnounceList = labInfoService.findAll();
+        } else {
+            labAnnounceList = labInfoService.findAll(admin.getDepartment());
+        }
         ActionContext.getContext().put("labAnnounceList", labAnnounceList);
         return "list";
     }
@@ -84,6 +91,9 @@ public class LabAnnounceAction extends ActionSupport implements ModelDriven<LabA
         // 只修改可以修改的内容
         LabAnnounce labAnnounce = labAnnounceService.findOne(model.getId());
         labAnnounce.setContent(model.getContent());
+        // 根据 id 查询院系
+        Department department = departmentService.findOne(departmentId);
+        labInfo.setDepartment(department);
         labAnnounceService.update(labAnnounce);
         return "edit";
     }
