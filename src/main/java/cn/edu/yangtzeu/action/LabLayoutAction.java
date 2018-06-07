@@ -85,11 +85,10 @@ public class LabLayoutAction extends ActionSupport implements ModelDriven<LabLay
         Admin admin = (Admin) ActionContext.getContext().getSession().get("admin");
         List<LabLayout> labLayoutList;
         if(admin.getDepartment().getId() == 1) {
-            labLayoutList = labLayoutService.findAll(admin.getDepartment());
+            labLayoutList = labLayoutService.findAll();
         } else {
             labLayoutList = labLayoutService.findAll(admin.getDepartment());
         }
-        labLayoutList = labLayoutService.findAll(admin.getDepartment());
         ActionContext.getContext().put("labLayoutList", labLayoutList);
         return "list";
     }

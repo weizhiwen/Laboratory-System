@@ -16,8 +16,12 @@ public class LabLayoutService {
         this.labLayoutDao = labLayoutDao;
     }
 
-    public List<LabLayout> findAll(Department department) {
+    public List<LabLayout> findAll() {
         return labLayoutDao.findAll();
+    }
+
+    public List<LabLayout> findAll(Department department) {
+        return labLayoutDao.findAll(department);
     }
 
     public void add(LabLayout labLayout) {

@@ -47,7 +47,7 @@
             <span class="span02">！</span>
         </p>
         <p class="bt">
-            <button class="btn btn-info" onclick="window.open('#')"><span class="back">点击返回</span></button>
+            <button class="btn btn-info"><span class="back" href="javascript:history.go(-1);">点击返回</span></button>
         </p>
     </div>
 </div>
