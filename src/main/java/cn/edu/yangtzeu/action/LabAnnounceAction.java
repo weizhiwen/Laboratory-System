@@ -1,6 +1,7 @@
 package cn.edu.yangtzeu.action;
 
 
+import cn.edu.yangtzeu.entity.Admin;
 import cn.edu.yangtzeu.entity.Department;
 import cn.edu.yangtzeu.entity.LabAnnounce;
 import cn.edu.yangtzeu.service.DepartmentService;
@@ -51,9 +52,9 @@ public class LabAnnounceAction extends ActionSupport implements ModelDriven<LabA
         Admin admin = (Admin) ActionContext.getContext().getSession().get("admin");
         List<LabAnnounce> labAnnounceList;
         if(admin.getDepartment().getId() == 1) {
-            labAnnounceList = labInfoService.findAll();
+            labAnnounceList = labAnnounceService.findAll();
         } else {
-            labAnnounceList = labInfoService.findAll(admin.getDepartment());
+            labAnnounceList = labAnnounceService.findAll(admin.getDepartment());
         }
         ActionContext.getContext().put("labAnnounceList", labAnnounceList);
         return "list";
@@ -82,7 +83,11 @@ public class LabAnnounceAction extends ActionSupport implements ModelDriven<LabA
         // 准备回显数据
         int id = model.getId();
         LabAnnounce labAnnounce = labAnnounceService.findOne(id);
+        departmentId = labAnnounce.getDepartment().getId();
         ActionContext.getContext().put("labAnnounce", labAnnounce);
+        // 准备院系数据
+        List<Department> departmentList = departmentService.findAll();
+        ActionContext.getContext().put("departmentList", departmentList);
         return "toEdit";
     }
 
@@ -91,9 +96,13 @@ public class LabAnnounceAction extends ActionSupport implements ModelDriven<LabA
         // 只修改可以修改的内容
         LabAnnounce labAnnounce = labAnnounceService.findOne(model.getId());
         labAnnounce.setContent(model.getContent());
-        // 根据 id 查询院系
-        Department department = departmentService.findOne(departmentId);
-        labInfo.setDepartment(department);
+        Admin admin = (Admin) ActionContext.getContext().getSession().get("admin");
+        // 不属于任何院系的人员可以重新设置院系
+        if(admin.getDepartment().getId() == 1) {
+            // 根据 id 查询院系
+            Department department = departmentService.findOne(departmentId);
+            labAnnounce.setDepartment(department);
+        }
         labAnnounceService.update(labAnnounce);
         return "edit";
     }

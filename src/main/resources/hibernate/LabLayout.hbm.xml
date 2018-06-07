@@ -8,7 +8,7 @@
            <generator class="native"/>
         </id>
         <property name="title" length="32"/>
-        <property name="img" type="imm_binary"/>
+        <property name="img" type="binary" length="66560"/>
         <property name="creator" length="25"/>
         <property name="createTime" length="19"/>
 

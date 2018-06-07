@@ -38,7 +38,6 @@
                     </select>
                 </s:else>
             </div>
-            
             <div class="form-inline">
                 <input type="submit" class="btn btn-primary" value="添加公告">
                 <a class="btn btn-primary" href="javascript:history.go(-1);">返回</a>

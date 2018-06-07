@@ -28,7 +28,7 @@
                     <label class="control-label">所属院系：</label>
                     <select name="departmentId" class="form-control">
                         <s:iterator value="departmentList">
-                            <option value="${id}" <s:if test="#request.labInfo.department.id == departmentId">selected</s:if>>${name}</option>
+                            <option value="${id}" <s:if test="id == departmentId">selected</s:if>>${name}</option>
                         </s:iterator>
                     </select>
                 </div>

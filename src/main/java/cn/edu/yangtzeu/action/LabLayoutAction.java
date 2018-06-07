@@ -1,5 +1,6 @@
 package cn.edu.yangtzeu.action;
 
+import cn.edu.yangtzeu.entity.Admin;
 import cn.edu.yangtzeu.entity.Department;
 import cn.edu.yangtzeu.entity.LabLayout;
 import cn.edu.yangtzeu.service.DepartmentService;
@@ -80,7 +81,15 @@ public class LabLayoutAction extends ActionSupport implements ModelDriven<LabLay
 
     // 布局列表方法
     public String list() {
-        List<LabLayout> labLayoutList = labLayoutService.findAll();
+        /// 按院系划分查询
+        Admin admin = (Admin) ActionContext.getContext().getSession().get("admin");
+        List<LabLayout> labLayoutList;
+        if(admin.getDepartment().getId() == 1) {
+            labLayoutList = labLayoutService.findAll(admin.getDepartment());
+        } else {
+            labLayoutList = labLayoutService.findAll(admin.getDepartment());
+        }
+        labLayoutList = labLayoutService.findAll(admin.getDepartment());
         ActionContext.getContext().put("labLayoutList", labLayoutList);
         return "list";
     }
@@ -100,6 +109,9 @@ public class LabLayoutAction extends ActionSupport implements ModelDriven<LabLay
             model.setImg(FileUtils.readFileToByteArray(cover));
         }
         model.setCreateTime(TimeUtil.getCurrentTime());
+        // 根据 id 查询院系
+        Department department = departmentService.findOne(departmentId);
+        model.setDepartment(department);
         labLayoutService.add(model);
         return "add";
     }
@@ -122,29 +134,42 @@ public class LabLayoutAction extends ActionSupport implements ModelDriven<LabLay
         // 准备回显数据
         int id = model.getId();
         LabLayout labLayout = labLayoutService.findOne(id);
+        departmentId = labLayout.getDepartment().getId();
         ActionContext.getContext().put("labLayout", labLayout);
+        // 准备院系数据
+        List<Department> departmentList = departmentService.findAll();
+        ActionContext.getContext().put("departmentList", departmentList);
         return "toEdit";
     }
 
     // 修改布局方法
     public String edit() throws IOException {
+        int id = model.getId();
+        LabLayout labLayout = labLayoutService.findOne(id);
         if (cover != null) {
-            // 将文件转为二进制文件
+            // 如果图片被修改了，重新设置图片
             model.setImg(FileUtils.readFileToByteArray(cover));
-            labLayoutService.update(model);
-            ;
-            return "edit";
         } else {
-            int id = model.getId();
-            LabLayout labLayout = labLayoutService.findOne(id);
+            // 没有图片没有修改
             byte[] b = labLayout.getImg();
             if (labLayout != null) {
                 labLayoutService.delete(labLayout);
             }
             model.setImg(b);
-            labLayoutService.add(model);
-            return "edit";
         }
+        // 设置除图片外的其他属性值
+        labLayout.setTitle(model.getTitle());
+        labLayout.setCreator(model.getCreator());
+        labLayout.setCreateTime(TimeUtil.getCurrentTime());
+        Admin admin = (Admin) ActionContext.getContext().getSession().get("admin");
+        // 不属于任何院系的人员可以重新设置院系
+        if(admin.getDepartment().getId() == 1) {
+            // 根据 id 查询院系
+            Department department = departmentService.findOne(departmentId);
+            labLayout.setDepartment(department);
+        }
+        labLayoutService.update(labLayout);
+        return "edit";
     }
 
     // 删除布局

@@ -1,6 +1,7 @@
 package cn.edu.yangtzeu.service;
 
 import cn.edu.yangtzeu.dao.LabLayoutDao;
+import cn.edu.yangtzeu.entity.Department;
 import cn.edu.yangtzeu.entity.LabLayout;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,7 +16,7 @@ public class LabLayoutService {
         this.labLayoutDao = labLayoutDao;
     }
 
-    public List<LabLayout> findAll() {
+    public List<LabLayout> findAll(Department department) {
         return labLayoutDao.findAll();
     }
 

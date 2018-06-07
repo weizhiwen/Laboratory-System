@@ -5,6 +5,8 @@
 <struts>
     <!--配置为开发模式-->
     <constant name="struts.devMode" value="true"/>
+    <!--设置整个Web应用设置的上传文件大小-->
+    <constant name="struts.multipart.maxSize" value="10000000"/>
     <package name="admin" extends="struts-default" namespace="/">
         <!--声明一个拦截器-->
         <interceptors>
@@ -141,6 +143,11 @@
             <result name="toEdit">/WEB-INF/admin/lab/layout/toEdit.jsp</result>
             <result name="edit" type="redirectAction">lablayout_list</result>
             <result name="delete" type="redirectAction">lablayout_list</result>
+            <!--设置单个action的文件大小，最大为100k-->
+            <interceptor-ref name="fileUpload">
+                <param name="maximumSize">102400</param>
+            </interceptor-ref>
+            <result name="input">/WEB_INF/admin/util/error.jsp</result>
         </action>
         <!--实验室设备-->
         <action name="labequipment_*" class="cn.edu.yangtzeu.action.LabEquipmentAction" method="{1}">

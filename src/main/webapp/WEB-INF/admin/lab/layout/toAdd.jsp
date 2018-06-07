@@ -27,6 +27,20 @@
                 <label class="control-label">添加图片：</label>
                 <input type="file" id="img" name="cover" required>
             </div>
+            <div class="form-group">
+                <label class="control-label">所属院系：</label>
+                <s:if test="#session.admin.department.id != 1">
+                    <input type="hidden" name="departmentId" value="${sessionScope.admin.department.id}">
+                    <input type="text" class="form-control" value="${sessionScope.admin.department.name}" readonly>
+                </s:if>
+                <s:else>
+                    <select name="departmentId" class="form-control">
+                        <s:iterator value="departmentList">
+                            <option value="${id}">${name}</option>
+                        </s:iterator>
+                    </select>
+                </s:else>
+            </div>
             <input type="hidden" name=creator value="<s:property value="#session.admin.id"></s:property> <s:property value="#session.admin.name"></s:property>">
             <div class="form-inline">
                 <input type="submit" class="btn btn-primary" value="添加布局">

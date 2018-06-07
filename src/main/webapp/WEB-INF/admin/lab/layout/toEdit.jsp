@@ -28,13 +28,19 @@
                 <img src="lablayout_showImg.action?id=${id}"  width="30" height="30">
                 <input type="file" id="img" name="cover">
             </div>
+            <s:if test="#session.admin.department.id == 1">
+                <div class="form-group">
+                    <label class="control-label">所属院系：</label>
+                    <select name="departmentId" class="form-control">
+                        <s:iterator value="departmentList">
+                            <option value="${id}" <s:if test="id == departmentId">selected</s:if>>${name}</option>
+                        </s:iterator>
+                    </select>
+                </div>
+            </s:if>
             <div class="form-group">
                 <label class="control-label">创建人：</label>
                 <input type="text" class="form-control" name="creator" value="${requestScope.labLayout.creator}" required>
-            </div>
-            <div class="form-group">
-                <label class="control-label">创建时间：</label>
-                <input type="text" class="form-control" name="createTime" value="${requestScope.labLayout.createTime}" required>
             </div>
             <div class="form-inline">
                 <input type="submit" class="btn btn-primary" value="修改布局信息">

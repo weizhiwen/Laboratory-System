@@ -83,6 +83,7 @@ public class LabInfoAction extends ActionSupport implements ModelDriven<LabInfo>
         int id = model.getId();
         LabInfo labInfo = labInfoService.findOne(id);
         ActionContext.getContext().put("labInfo", labInfo);
+        departmentId = labInfo.getDepartment().getId();
         // 准备院系数据
         List<Department> departmentList = departmentService.findAll();
         ActionContext.getContext().put("departmentList", departmentList);
@@ -97,9 +98,13 @@ public class LabInfoAction extends ActionSupport implements ModelDriven<LabInfo>
         labInfo.setIntroduce(model.getIntroduce());
         labInfo.setLocation(model.getLocation());
         labInfo.setNumber(model.getNumber());
-        // 根据 id 查询院系
-        Department department = departmentService.findOne(departmentId);
-        labInfo.setDepartment(department);
+        Admin admin = (Admin) ActionContext.getContext().getSession().get("admin");
+        // 不属于任何院系的人员可以重新设置院系
+        if(admin.getDepartment().getId() == 1) {
+            // 根据 id 查询院系
+            Department department = departmentService.findOne(departmentId);
+            labInfo.setDepartment(department);
+        }
         labInfoService.update(labInfo);
         return "edit";
     }

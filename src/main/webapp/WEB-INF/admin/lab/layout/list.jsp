@@ -27,6 +27,7 @@
                         <th>布局序号</th>
                         <th>布局标题</th>
                         <th>布局图片</th>
+                        <th>所属院系</th>
                         <th>创建人</th>
                         <th>创建时间</th>
                         <th>操作</th>
@@ -36,6 +37,7 @@
                             <td>${id}</td>
                             <td>${title}</td>
                             <td><img src="lablayout_showImg.action?id=${id}" alt="布局图书" width="30" height="30"></td>
+                            <td>${department.name}</td>
                             <td>${creator}</td>
                             <td>${createTime}</td>
                             <td>
