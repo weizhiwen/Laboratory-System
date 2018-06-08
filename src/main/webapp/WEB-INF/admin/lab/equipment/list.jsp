@@ -24,12 +24,13 @@
             <div class="table-responsive">
                 <table class="table table-striped table-hover">
                     <tr>
-                        <th>实验室设备序号</th>
-                        <th>实验室设备名称</th>
-                        <th>实验室设备状态</th>
-                        <th>实验室设备介绍</th>
-                        <th>设备图片</th>
+                        <th>序号</th>
+                        <th>设备名称</th>
+                        <th>设备状态</th>
+                        <th>设备介绍</th>
+                        <th>图片</th>
                         <th>所在实验室</th>
+                        <th>所属院系</th>
                         <th>录入时间</th>
                         <th>操作</th>
                     </tr>
@@ -41,6 +42,7 @@
                             <td>${description}</td>
                             <td><img src="labequipment_showImg.action?id=${id}"  width="30" height="30"></td>
                             <td>${labInfo.title}</td>
+                            <td>${labInfo.department.name}</td>
                             <td>${inTime}</td>
                             <td>
                                 <s:a action="labequipment_delete.action?id=%{id}" onclick="return confirm('确认要删除吗？')"><i class="zmdi zmdi-close"></i> 删除</s:a>

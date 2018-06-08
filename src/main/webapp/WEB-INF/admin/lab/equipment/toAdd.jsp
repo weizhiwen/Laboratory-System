@@ -51,13 +51,11 @@
             <div class="form-group">
                 <label class="control-label">录入时间：</label>
                 <input type="date" class="form-control" name="inTime"  required> 
-                
             </div>
             <div class="form-inline">
                 <input type="submit" class="btn btn-primary" value="添加设备" >
                 <a class="btn btn-primary" href="javascript:history.go(-1);">返回</a>
             </div>
-            
         </form>
     </div>
 </div>

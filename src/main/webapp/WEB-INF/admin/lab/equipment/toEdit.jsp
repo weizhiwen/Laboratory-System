@@ -25,7 +25,12 @@
             </div>
             <div class="form-group">
                 <label class="control-label">设备状态：</label>
-                <input type="text" class="form-control" name="status" value="${requestScope.labEquipment.status}" required>
+                <select name="status" class="form-control" required>
+                    <option value="正常工作" <s:if test='#request.labEquipment.status == "正常工作"'>selected</s:if>>正常工作</option>
+                    <option value="缺失" <s:if test='#request.labEquipment.status == "缺失"'>selected</s:if>>缺失</option>
+                    <option value="损坏" <s:if test='#request.labEquipment.status == "损坏"'>selected</s:if>>损坏</option>
+                    <option value="需要维护" <s:if test='#request.labEquipment.status == "需要维护"'>selected</s:if>>需要维护</option>
+                </select>
             </div>
             <div class="form-group">
                 <label class="control-label">设备介绍：</label>
@@ -46,7 +51,7 @@
             </div>
             <div class="form-group">
                 <label class="control-label">录入时间：</label>
-                <input type="text" class="form-control" name="inTime" value="${requestScope.labEquipment.inTime}" required>
+                <input type="date" class="form-control" name="inTime" value="${requestScope.labEquipment.inTime}" required>
             </div>
             <div class="form-inline">
                 <input type="submit" class="btn btn-primary" value="修改实验室信息">

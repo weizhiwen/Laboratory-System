@@ -37,7 +37,7 @@
             </div>
             <s:if test="#session.admin.department.id == 1">
                 <div class="form-group">
-                    <label class="control-label">所属院系：${requestScope.labInfo.department.id}和${departmentId}</label>
+                    <label class="control-label">所属院系：</label>
                     <select name="departmentId" class="form-control">
                         <s:iterator value="departmentList">
                             <option value="${id}" <s:if test="id == departmentId">selected</s:if>>${name}</option>

@@ -145,16 +145,9 @@ public class LabLayoutAction extends ActionSupport implements ModelDriven<LabLay
     public String edit() throws IOException {
         int id = model.getId();
         LabLayout labLayout = labLayoutService.findOne(id);
+        // 如果图片被修改了，重新设置图片
         if (cover != null) {
-            // 如果图片被修改了，重新设置图片
-            model.setImg(FileUtils.readFileToByteArray(cover));
-        } else {
-            // 没有图片没有修改
-            byte[] b = labLayout.getImg();
-            if (labLayout != null) {
-                labLayoutService.delete(labLayout);
-            }
-            model.setImg(b);
+            labLayout.setImg(FileUtils.readFileToByteArray(cover));
         }
         // 设置除图片外的其他属性值
         labLayout.setTitle(model.getTitle());

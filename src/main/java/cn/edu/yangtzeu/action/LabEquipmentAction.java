@@ -1,5 +1,6 @@
 package cn.edu.yangtzeu.action;
 
+import cn.edu.yangtzeu.entity.Admin;
 import cn.edu.yangtzeu.entity.LabEquipment;
 import cn.edu.yangtzeu.entity.LabInfo;
 import cn.edu.yangtzeu.service.LabEquipmentService;
@@ -83,14 +84,28 @@ public class LabEquipmentAction extends ActionSupport implements ModelDriven<Lab
 
     // 设备列表方法
     public String list() {
-        List<LabEquipment> labEquipmentList = labEquipmentService.findAll();
+        // 按院系划分查询
+        Admin admin = (Admin) ActionContext.getContext().getSession().get("admin");
+        List<LabEquipment> labEquipmentList;
+        if(admin.getDepartment().getId() == 1) {
+            labEquipmentList = labEquipmentService.findAll();
+        } else {
+            labEquipmentList = labEquipmentService.findAll(admin.getDepartment());
+        }
         ActionContext.getContext().put("labEquipmentList", labEquipmentList);
         return "list";
     }
 
     // 转到添加设备
     public String toAdd() {
-        List<LabInfo> labInfoList = labInfoService.findAll();
+        // 按院系划分查询
+        Admin admin = (Admin) ActionContext.getContext().getSession().get("admin");
+        List<LabInfo> labInfoList;
+        if(admin.getDepartment().getId() == 1) {
+            labInfoList = labInfoService.findAll();
+        } else {
+            labInfoList = labInfoService.findAll(admin.getDepartment());
+        }
         ActionContext.getContext().put("labInfoList", labInfoList);
         return "toAdd";
     }
@@ -126,34 +141,37 @@ public class LabEquipmentAction extends ActionSupport implements ModelDriven<Lab
         int id = model.getId();
         LabEquipment labEquipment = labEquipmentService.findOne(id);
         ActionContext.getContext().put("labEquipment", labEquipment);
-        List<LabInfo> labInfoList = labInfoService.findAll();
+        // 按院系查找实验室
+        Admin admin = (Admin) ActionContext.getContext().getSession().get("admin");
+        List<LabInfo> labInfoList;
+        if(admin.getDepartment().getId() == 1) {
+            labInfoList = labInfoService.findAll();
+        } else {
+            labInfoList = labInfoService.findAll(admin.getDepartment());
+        }
         ActionContext.getContext().put("labInfoList", labInfoList);
-        setLabId(labEquipment.getLabInfo().getId());
+        labId = labEquipment.getLabInfo().getId();
         return "toEdit";
     }
 
     // 修改设备方法
     public String edit() throws IOException {
+        int id = model.getId();
+        LabEquipment labEquipment = labEquipmentService.findOne(id);
+        // 如果图片被修改了，重新设置图片
         if (cover != null) {
             // 将文件转为二进制文件
-            model.setImg(FileUtils.readFileToByteArray(cover));
-            LabInfo labInfo = labInfoService.findOne(labId);
-            model.setLabInfo(labInfo);
-            labEquipmentService.update(model);
-            return "edit";
-        } else {
-            int id = model.getId();
-            LabEquipment labEquipment = labEquipmentService.findOne(id);
-            byte[] b = labEquipment.getImg();
-            if (labEquipment != null) {
-                labEquipmentService.delete(labEquipment);
-            }
-            model.setImg(b);
-            LabInfo labInfo = labInfoService.findOne(labId);
-            model.setLabInfo(labInfo);
-            labEquipmentService.add(model);
-            return "edit";
+            labEquipment.setImg(FileUtils.readFileToByteArray(cover));
         }
+        // 设置除图片外的其他属性
+        labEquipment.setName(model.getName());
+        labEquipment.setStatus(model.getStatus());
+        labEquipment.setDescription(model.getDescription());
+        // 根据 labId 查询实验室
+        LabInfo labInfo = labInfoService.findOne(labId);
+        labEquipment.setLabInfo(labInfo);
+        labEquipmentService.update(labEquipment);
+        return "edit";
     }
 
     // 删除设备

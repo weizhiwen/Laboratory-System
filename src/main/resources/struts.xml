@@ -143,9 +143,9 @@
             <result name="toEdit">/WEB-INF/admin/lab/layout/toEdit.jsp</result>
             <result name="edit" type="redirectAction">lablayout_list</result>
             <result name="delete" type="redirectAction">lablayout_list</result>
-            <!--设置上传实验室布局图片大小，最大为100k-->
+            <!--设置上传实验室布局图片大小，最大为1024k，也即是1M-->
             <interceptor-ref name="fileUpload">
-                <param name="maximumSize">102400</param>
+                <param name="maximumSize">1048576</param>
             </interceptor-ref>
             <!--上传超过限制大小显示页面-->
             <result name="input">/WEB-INF/admin/util/error.jsp</result>
@@ -159,6 +159,13 @@
             <result name="toEdit">/WEB-INF/admin/lab/equipment/toEdit.jsp</result>
             <result name="edit" type="redirectAction">labequipment_list</result>
             <result name="delete" type="redirectAction">labequipment_list</result>
+            <!--设置上传实验室设备图片大小，最大为100k-->
+            <interceptor-ref name="fileUpload">
+                <param name="maximumSize">102400</param>
+            </interceptor-ref>
+            <!--上传超过限制大小显示页面-->
+            <result name="input">/WEB-INF/admin/util/error.jsp</result>
+            <interceptor-ref name="defaultStack" />
         </action>
 
         <!--资源-->
